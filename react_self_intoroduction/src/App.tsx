@@ -2,8 +2,6 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
         <header>
@@ -26,10 +24,12 @@ const Info = () => {
         <>
             <h2>基本情報</h2>
             <table>
+            <tbody>
                 <tr><td>名前</td><td>金子健人</td></tr>
                 <tr><td>所属</td><td>公立諏訪東京理科大学</td></tr>
                 <tr><td>学籍番号</td><td>T223035</td></tr>
                 <tr><td>出身地</td><td>長野県諏訪市</td></tr>
+            </tbody>
             </table>
         </>
     )
@@ -65,12 +65,29 @@ const Vita = () => {
 }
 
 const Question = () => {
+    const [question, setQuestion] = useState('')
+
+    const handleClick = (e: React.FormEvent) =>{
+    e.preventDefault();
+    console.log("入力された質問：", question)
+  }
+
     return(
         <>
             <h2>質問フォーム</h2>
             <form>
-                <textarea rows={4} cols={40} placeholder="ここに質問を入力してください"></textarea>
-                <button type="submit">送信</button>
+                <textarea
+                    rows={4}
+                    cols={40}
+                    placeholder="ここに質問を入力してください"
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                />
+                <button
+                    type="submit"
+                    onClick={handleClick}>
+                        送信
+                </button>
             </form>
         </>
     )
