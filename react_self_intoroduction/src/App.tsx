@@ -19,6 +19,8 @@ function App() {
   )
 }
 
+// 自己紹介コンポーネント
+
 const Info = () => {
     return(
         <>
@@ -64,6 +66,7 @@ const Vita = () => {
     )
 }
 
+// ボタンを押すとフォーム入力内容をコンソールに出力する
 const Question = () => {
     const [question, setQuestion] = useState('')
 
